@@ -22,7 +22,7 @@ class TemplateRow extends React.Component {
       <li className='b_template-row list-group-item'>
         <div>
           <div className='b_template-row__cell'>
-            <h4><a onClick={this.toggleDetails.bind(this)}>{this.props.title}</a></h4>
+            <h4><a href='javascript:void(0)' onClick={this.toggleDetails.bind(this)}>{this.props.title}</a></h4>
             <div>{this.props.summary}</div>
             <div>Rating: {this.props.rating}</div>
             <div>Downloads: {this.props.downloads}</div>
