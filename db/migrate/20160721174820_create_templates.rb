@@ -7,6 +7,8 @@ class CreateTemplates < ActiveRecord::Migration
       t.text :description
       t.text :author
       t.integer :rating
+
+      t.timestamps
     end
   end
 end

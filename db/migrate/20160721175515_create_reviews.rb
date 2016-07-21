@@ -5,6 +5,8 @@ class CreateReviews < ActiveRecord::Migration
       t.text :review
       t.integer :rating
       t.text :reviewer
+
+      t.timestamps
     end
   end
 end
