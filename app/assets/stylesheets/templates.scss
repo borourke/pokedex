@@ -7,10 +7,14 @@
 
   .b_template-row__cell {
     display: inline-block;
+    min-height: 120px;
   }
 
   .b_template_row__thumb {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
+    vertical-align: inherit;
+    float: right;
+    border-radius: 5px;
   }
 }

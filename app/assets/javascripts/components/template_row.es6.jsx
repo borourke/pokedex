@@ -12,32 +12,27 @@ class TemplateRow extends React.Component {
   }
 
   render () {
-    let content;
+    let details;
     if (this.state.showDetails) {
-      content = (
-        <div>
-          Expanded
-        </div>
-      )
-    } else {
-      content = (
-        <div>
-          <span className="b_template-row__cell">
-            <div>Summary: {this.props.summary}</div>
-            <div>Rating: {this.props.rating}</div>
-            <div>Downloads: {this.props.downloads}</div>
-            <div>Author: {this.props.author}</div>
-          </span>
-          <span>
-            <img className='b_template_row__thumb' src={this.props.imageUrl}/>
-          </span>
-        </div>
+      details = (
+        <TemplateDetail id={this.props.id}/>
       )
     }
     return (
       <li className='b_template-row list-group-item'>
-        <div>Title: <a onClick={this.toggleDetails.bind(this)}>{this.props.title}</a></div>
-        {content}
+        <div>
+          <div className='b_template-row__cell'>
+            <h4><a onClick={this.toggleDetails.bind(this)}>{this.props.title}</a></h4>
+            <div>{this.props.summary}</div>
+            <div>Rating: {this.props.rating}</div>
+            <div>Downloads: {this.props.downloads}</div>
+            <div>Author: {this.props.author}</div>
+          </div>
+          <div className='b_template-row__cell pull-right'>
+            <img className='b_template_row__thumb' src={this.props.imageUrl}/>
+          </div>
+        </div>
+        {details}
       </li>
     )
   }

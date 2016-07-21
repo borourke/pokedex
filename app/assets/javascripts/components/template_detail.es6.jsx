@@ -1,10 +1,23 @@
 class TemplateDetail extends React.Component {
+
+  componentDidMount () {
+    $.ajax({
+      url: 'templates/show/' + this.props.id,
+      type: 'GET',
+      dataType: 'json',
+      success: function (data) {
+        console.log(data)
+        this.setState({template: data.template, reviews: data.reviews, tags: data.tags})
+      }.bind(this),
+      failure: function (data) {
+        console.log("ajax failed")
+      }.bind(this)
+    })
+  }
+
   render () {
     return (
       <div>
-        <div>Title: {this.props.title}</div>
-        <div>Summary: {this.props.summary}</div>
-        <div>Description: {this.props.description}</div>
         <div>Rating: {this.props.rating}</div>
         <div>Downloads: {this.props.downloads}</div>
         <div>Reviews: {this.props.reviews}</div>
@@ -15,11 +28,5 @@ class TemplateDetail extends React.Component {
 }
 
 TemplateDetail.propTypes = {
-  title: React.PropTypes.string,
-  summary: React.PropTypes.string,
-  description: React.PropTypes.string,
-  rating: React.PropTypes.number,
-  downloads: React.PropTypes.number,
-  reviews: React.PropTypes.array,
-  tags: React.PropTypes.array
+  id: React.PropTypes.number
 };
