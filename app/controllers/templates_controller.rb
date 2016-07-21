@@ -3,6 +3,6 @@ class TemplatesController <  ApplicationController
   end
 
   def index
-    return json: TemplateComponent.new(route: :index).as_json
+    return TemplateComponent.new(route: :index).as_json
   end
 end
