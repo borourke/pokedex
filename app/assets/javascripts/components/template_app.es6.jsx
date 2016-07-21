@@ -1,4 +1,18 @@
 class TemplateApp extends React.Component {
+
+  componentDidMount () {
+    console.log('mounted')
+    $.ajax({
+      url: '/index',
+      type: 'GET',
+      dataType: 'json'
+    }).done( function() {
+      console.log(success)
+    }).failure( function() {
+      console.log("AJAX FAILED")
+    })
+  }
+
   render () {
     return (
       <div className='container'>
