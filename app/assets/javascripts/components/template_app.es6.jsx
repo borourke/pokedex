@@ -8,12 +8,20 @@ class TemplateApp extends React.Component {
     }
   }
 
+  showTemplateForm () {
+    this.setState( { page: 'TemplateForm', showHeader: false} )
+  }
+
   render () {
     let page;
     let header;
     if (this.state.page == 'TemplateIndex') {
       page = (
         <TemplateIndex/>
+      )
+    } else if (this.state.page == 'TemplateForm') {
+      page = (
+        <TemplateForm/>
       )
     }
 
@@ -24,7 +32,7 @@ class TemplateApp extends React.Component {
             <h4>Find templates created by other CrowdFlower users</h4>
           </div>
           <div className='b_new-template-btn inline-blocked pull-right'>
-            <a href='javascript:void(0)' className='btn btn-primary'>New Template</a>
+            <a href='javascript:void(0)' className='btn btn-primary' onClick={this.showTemplateForm.bind(this)}>New Template</a>
           </div>
           <br/>
           <br/>
