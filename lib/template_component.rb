@@ -31,7 +31,7 @@ class TemplateComponent
       rating: template.rating,
       title: template.title,
       downloads: rand(1000),
-      image_url: "http://24.media.tumblr.com/tumblr_m31lobA6Lp1r3is9so1_500.jpg",
+      image_url: template.image_url,
       summary: template.summary
     }
   end
