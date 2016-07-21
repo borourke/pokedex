@@ -1,28 +1,59 @@
 class TemplateComponent
-  attr_reader :as_json
+  attr_reader :as_json, :params
 
-  def initialize(route:)
-    @as_json = send(route)
+  def initialize(route:, template_id: nil)
+    @params = { template_id: template_id }
+    @as_json = send(route, params)
   end
 
-  def index
+  def index(params)
     {
       templates: collect_templates
     }
   end
 
+  def show(params)
+    template = Template.find(params[:template_id])
+    {
+      template: tempalte_as_json(template: template),
+      reviews: collect_reviews(template: template),
+      tags: collect_tags(template: template)
+    }
+  end
+
   private
+
+  def tempalte_as_json(template:)
+    {
+      template_id: template.id,
+      author: template.author,
+      rating: template.rating,
+      title: template.title,
+      downloads: rand(1000),
+      image_url: "https://2.bp.blogspot.com/-Gh9Drj62EFw/VeXMk3xcsOI/AAAAAAAAAxw/knYsAcpaABo/s160OGB-INSIDER-BLOGS-GoogleLogox2-Animated.gif",
+      summary: template.summary
+    }
+  end
 
   def collect_templates
     Template.all.each_with_object([]) do |template, results_array|
+      results_array << tempalte_as_json(template: template)
+    end
+  end
+
+  def collect_reviews(template:)
+    template.reviews.each_with_object([]) do |review, results_array|
       results_array << {
-        template_id: template.id,
-        author: template.author,
-        rating: template.rating,
-        title: template.title,
-        downloads: rand(1000),
-        image_url: "https://2.bp.blogspot.com/-Gh9Drj62EFw/VeXMk3xcsOI/AAAAAAAAAxw/knYsAcpaABo/s1600/OGB-INSIDER-BLOGS-GoogleLogox2-Animated.gif",
-        summary: template.summary
+        review: review.review,
+        reviewer: review.reviewer,
+      }
+    end
+  end
+
+  def collect_tags(template:)
+    template.tags.each_with_object([]) do |tag, results_array|
+      results_array << {
+        tag: tag.tag
       }
     end
   end
