@@ -26,6 +26,7 @@ class TemplateComponent
   def tempalte_as_json(template:)
     {
       template_id: template.id,
+      job_id: template.job_id,
       author: template.author,
       rating: template.rating,
       title: template.title,
