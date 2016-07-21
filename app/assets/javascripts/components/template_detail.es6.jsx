@@ -1,5 +1,13 @@
 class TemplateDetail extends React.Component {
 
+  constructor (props) {
+    super(props)
+    this.state = {
+      reviews: [],
+      tags: []
+    }
+  }
+
   componentDidMount () {
     $.ajax({
       url: 'templates/show/' + this.props.id,
@@ -17,13 +25,30 @@ class TemplateDetail extends React.Component {
 
   render () {
     return (
-      <div>
-        <div>Rating: {this.props.rating}</div>
-        <div>Downloads: {this.props.downloads}</div>
-        <div>Reviews: {this.props.reviews}</div>
-        <div>Tags: {this.props.tags}</div>
+      <div className="b_template-detail">
+        <div>
+          <h4>Tags</h4>
+          {this.state.tags.map(function(tag, i) {
+            return (
+              <span key={i} className="label label-default b_template-detail__tag">{tag.tag}</span>
+            )
+          })}
+        </div>
+        <br/>
+        <div>
+          <h4>Reviews</h4>
+          {this.state.reviews.map(function(review, i) {
+            return (
+              <TemplateReview
+                key={i}
+                reviewer={review.reviewer}
+                review={review.review}
+              />
+            )
+          })}
+        </div>
       </div>
-    );
+    )
   }
 }
 
