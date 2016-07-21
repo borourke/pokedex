@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160721175515) do
+ActiveRecord::Schema.define(version: 20160721232126) do
 
   create_table "reviews", force: :cascade do |t|
     t.integer  "template_id"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20160721175515) do
     t.integer  "rating"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "image_url"
   end
 
 end
