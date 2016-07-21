@@ -25,7 +25,7 @@ class TemplateIndex extends React.Component {
 
   render () {
     return (
-      <div className="b_template-index">
+      <ul className="b_template-index list-group">
         {this.state.templates.map(function(template, i) {
           return (
             <TemplateRow
@@ -39,7 +39,7 @@ class TemplateIndex extends React.Component {
             />
           )
         })}
-      </div>
+      </ul>
     );
   }
 }
