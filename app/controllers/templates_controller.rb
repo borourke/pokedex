@@ -17,6 +17,6 @@ class TemplatesController <  ApplicationController
   private
 
   def template_params
-    params.require(:template).permit(:job_id, :summary, :description, :author, :title, image_url:)
+    params.require(:template).permit(:job_id, :summary, :description, :author, :title, :image_url)
   end
 end
