@@ -12,6 +12,11 @@ class TemplateApp extends React.Component {
     this.setState( { page: 'TemplateForm', showHeader: false} )
   }
 
+  goHome() {
+    console.log("triggered")
+    this.setState( { page: 'TemplateIndex', showHeader: true} )
+  }
+
   render () {
     let page;
     let header;
@@ -21,7 +26,7 @@ class TemplateApp extends React.Component {
       )
     } else if (this.state.page == 'TemplateForm') {
       page = (
-        <TemplateForm/>
+        <TemplateForm goHome={this.goHome.bind(this)}/>
       )
     }
 

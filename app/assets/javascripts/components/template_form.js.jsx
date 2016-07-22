@@ -1,12 +1,30 @@
-var TemplateForm = React.createClass({
+class TemplateForm extends React.Component {
 
-  render: function() {
+  submitForm (e) {
+    e.preventDefault()
+    $(e.target).append('<input type="hidden" name="authenticity_token" value="'+ $('meta[name="csrf-token"]').attr('content') + '" /> ')
+    $.ajax({
+      url: '/templates',
+      type: 'POST',
+      dataType: 'json',
+      data: $(e.target).serialize(),
+      success: function(data) {
+        this.props.goHome()
+      }.bind(this),
+      failure: function(data) {
+        console.log("failure to submit")
+      }.bind(this)
+    })
+
+  }
+
+  render () {
     return (
       <div>
         <h4>Create New Template</h4>
         <div>
         <br/>
-          <form className='form-horizontal'>
+          <form className='form-horizontal' onSubmit={this.submitForm.bind(this)}>
             <div className='form-group'>
               <label for='templateTitle' className='col-xs-2 control-label'>Title</label>
               <div className='col-xs-10'>
@@ -14,9 +32,9 @@ var TemplateForm = React.createClass({
               </div>
             </div>
             <div className='form-group'>
-              <label for='templateEmail' className='col-xs-2 control-label'>Email</label>
+              <label for='templateAuthor' className='col-xs-2 control-label'>Author</label>
               <div className='col-xs-10'>
-                <input type='email' name='template[email]' className='form-control' id='templateEmail' placeholder='Enter Creating User' required/>
+                <input type='email' name='template[author]' className='form-control' id='templateAuthor' placeholder='Enter Creating User' required/>
               </div>
             </div>
             <div className='form-group'>
@@ -37,9 +55,9 @@ var TemplateForm = React.createClass({
                 <input type='url' name='template[image_url]' className='form-control' id='templateImageUrl' placeholder='Enter thumbnail URL' required/>
               </div>
             </div>
-            <div className="form-group">
+            <div className='form-group'>
               <div className="col-sm-offset-2 col-sm-10">
-                <button type="submit" className="btn btn-default">Create</button>
+                <button type='submit' className="btn btn-default">Create</button>
               </div>
             </div>
           </form>
@@ -47,4 +65,8 @@ var TemplateForm = React.createClass({
       </div>
     )
   }
-});
+}
+
+TemplateDetail.propTypes = {
+  goHome: React.PropTypes.func
+}

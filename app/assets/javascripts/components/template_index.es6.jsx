@@ -16,7 +16,7 @@ class TemplateIndex extends React.Component {
         console.log(data)
         this.setState({ templates: data.templates})
       }.bind(this),
-      failure: function (data) {
+      fail: function (data) {
         console.log("ajax failed")
       }.bind(this)
     })
