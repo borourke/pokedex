@@ -26,6 +26,8 @@ class TemplateIndex extends React.Component {
   render () {
     return (
       <div>
+        <input type='text' className='form-control fake-tq-search' placeholder='Search for templates'/>
+        <span className="glyphicon glyphicon-search" aria-hidden="true"></span>
         <ul className="b_template-index list-group">
           {this.state.templates.map(function(template, i) {
             return (
