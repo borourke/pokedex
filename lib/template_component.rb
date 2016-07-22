@@ -28,7 +28,7 @@ class TemplateComponent
       template_id: template.id,
       job_id: template.job_id,
       author: template.author,
-      rating: template.rating,
+      rating: rand(5)+1,
       title: template.title,
       downloads: rand(1000),
       image_url: template.image_url,
