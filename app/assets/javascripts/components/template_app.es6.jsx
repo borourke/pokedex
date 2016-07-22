@@ -50,7 +50,7 @@ class TemplateApp extends React.Component {
         <div className='row'>
           <div className='col-xs-1'></div>
           <div className='col-xs-10'>
-            <h2>Pokedex</h2>
+            <h2>JobStore</h2>
             {header}
             {page}
           </div>
