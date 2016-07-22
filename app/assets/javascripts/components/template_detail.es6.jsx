@@ -3,6 +3,7 @@ class TemplateDetail extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
+      copy_url: 'https://sandbox.cf3.us/jobs/' + this.props.job_id + '/copy',
       reviews: [],
       tags: []
     }
@@ -47,11 +48,15 @@ class TemplateDetail extends React.Component {
             )
           })}
         </div>
+        <div className='b_template-detail__copy'>
+          <a className='btn btn-success' href={this.state.copy_url} target='_blank'>Copy to My Account</a>
+        </div>
       </div>
     )
   }
 }
 
 TemplateDetail.propTypes = {
-  id: React.PropTypes.number
+  id: React.PropTypes.number,
+  job_id: React.PropTypes.number
 };

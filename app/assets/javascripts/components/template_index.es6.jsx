@@ -38,6 +38,7 @@ class TemplateIndex extends React.Component {
                 author={template.author}
                 imageUrl={template.image_url}
                 id={template.template_id}
+                job_id={template.job_id}
               />
             )
           })}
