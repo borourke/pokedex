@@ -5,7 +5,8 @@ class TemplateDetail extends React.Component {
     this.state = {
       copy_url: 'https://sandbox.cf3.us/jobs/' + this.props.job_id + '/copy',
       reviews: [],
-      tags: []
+      tags: [],
+      template: {}
     }
   }
 
@@ -16,7 +17,7 @@ class TemplateDetail extends React.Component {
       dataType: 'json',
       success: function (data) {
         console.log(data)
-        this.setState({template: data.template, reviews: data.reviews, tags: data.tags})
+        this.setState({template: data.template, reviews: data.reviews, tags: data.tags })
       }.bind(this),
       failure: function (data) {
         console.log("ajax failed")
@@ -27,6 +28,12 @@ class TemplateDetail extends React.Component {
   render () {
     return (
       <div className="b_template-detail">
+        <div>
+          <h4>Description</h4>
+          <p>
+            {this.state.template.description}
+          </p>
+        </div>
         <div>
           <h4>Tags</h4>
           {this.state.tags.map(function(tag, i) {

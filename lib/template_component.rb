@@ -32,7 +32,8 @@ class TemplateComponent
       title: template.title,
       downloads: rand(1000),
       image_url: template.image_url,
-      summary: template.summary
+      summary: template.summary,
+      description: template.description
     }
   end
 
