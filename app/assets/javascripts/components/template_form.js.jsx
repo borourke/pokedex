@@ -18,12 +18,19 @@ class TemplateForm extends React.Component {
 
   }
 
+  goHome () {
+    this.props.goHome()
+  }
+
   render () {
     return (
       <div>
-        <h4>Create New Template</h4>
+        <h4>
+          Create New Template
+        </h4>
+        <a href='javascript:void(0)' onClick={this.goHome.bind(this)}><span className="glyphicon glyphicon glyphicon-arrow-left"></span> Back</a>
         <div>
-        <br/>
+          <br/>
           <form className='form-horizontal' onSubmit={this.submitForm.bind(this)}>
             <div className='form-group'>
               <label for='templateTitle' className='col-xs-2 control-label'>Title</label>
@@ -57,7 +64,7 @@ class TemplateForm extends React.Component {
             </div>
             <div className='form-group'>
               <div className="col-sm-offset-2 col-sm-10">
-                <button type='submit' className="btn btn-default">Create</button>
+                <button type='submit' className="btn btn-default">Send to CrowdFlower for Review</button>
               </div>
             </div>
           </form>
